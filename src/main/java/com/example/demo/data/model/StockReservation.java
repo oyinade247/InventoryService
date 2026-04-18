@@ -5,9 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.Instant;
@@ -17,17 +16,15 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-public class Inventory {
+public class StockReservation {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    private String productId;
-    private Integer availableQty;
-    private Integer reservedQty;
-    private Integer soldQty;
-    private Integer lowStockThreshold;
+    private String inventoryId;
+    private String orderId;
+    private Integer quantity;
+    private StockStatus status;
     @CreatedDate
     private LocalDateTime createdAt;
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
+    private LocalDateTime expiresAt;
 }
